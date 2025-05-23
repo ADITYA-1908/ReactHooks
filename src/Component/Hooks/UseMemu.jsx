@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 function UseMemu() {
   const [number, setNumber] = useState(0);
@@ -14,36 +14,40 @@ function UseMemu() {
   }, [number]);
 
   return (
-    <>
-      <div className="pb-20">
-        <h1 className="underline">4. usememo Hook</h1>
-        <br />
-        <p className="text-xl">* It return a memorized value.</p>
-        <p className="text-xl">
-          * It only run when one of it's value get updated.
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-center px-4 gap-6">
+      <h1 className="text-3xl font-bold underline text-cyan-700">
+        4. useMemo Hook
+      </h1>
+
+      <div className="space-y-2">
+        <p className="text-xl text-gray-700">* It returns a memoized value.</p>
+        <p className="text-xl text-gray-700">
+          * It only runs when one of its dependencies is updated.
         </p>
-        <div className="inline-flex items-baseline gap-5 mt-4 mb-6">
-          <input
-            className="bg-white text-black"
-            type="number"
-            value={number}
-            onChange={(e) => setNumber(Number(e.target.value))}
-          />
-          <p>Cube of a number: {result}</p>
-        </div>
-        <br />
-        <div className="inline-flex items-baseline gap-5 mt-4 mb-6">
-          <p className="text-xl">Counter: {counter}</p>
-          <button
-            onClick={() => {
-              setcounter(counter + 1);
-            }}
-          >
-            Counter
-          </button>
-        </div>
       </div>
-    </>
+
+      <div className="flex flex-col sm:flex-row items-center gap-4">
+        <input
+          className="border border-gray-300 rounded px-4 py-2 shadow focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          type="number"
+          value={number}
+          onChange={(e) => setNumber(Number(e.target.value))}
+        />
+        <p className="text-lg font-medium text-gray-800">
+          Cube of the number: {result}
+        </p>
+      </div>
+
+      <div className="flex flex-col sm:flex-row items-center gap-4">
+        <p className="text-xl text-gray-800">Counter: {counter}</p>
+        <button
+          onClick={() => setcounter(counter + 1)}
+          className="bg-cyan-600 text-white px-4 py-2 rounded shadow hover:bg-cyan-700 transition"
+        >
+          Increment Counter
+        </button>
+      </div>
+    </div>
   );
 }
 

@@ -1,73 +1,42 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
+
+const navItems = [
+  { path: "/theroy", label: "Theory" },
+  { path: "/usestate", label: "Use State" },
+  { path: "/useeffect", label: "Use Effect" },
+  { path: "/UseRef", label: "Use Ref" },
+  { path: "/Usereducer", label: "Use Reducer" },
+  { path: "/Uselayout", label: "Use Layout" },
+  { path: "/Usefetch", label: "Use Fetch" },
+  { path: "/usecallback", label: "Use Callback" },
+  { path: "/usememu", label: "Use Memo" },
+  { path: "/usecontext", label: "use Context" },
+  { path: "/fetchApi", label: "Fetch API" },
+];
 
 export default function Header() {
   return (
-    <div className="w-screen bg-gray-200 h-screen flex items-center justify-center">
-      {/* Big Box */}
-      <div className="w-1/3 h-4/5 bg-cyan-500 flex items-center justify-center">
-        {/* Row of Small Boxes */}
-        <div className="flex flex-col gap-4 items-center">
-          <div className="w-80 h-20 bg-yellow-500 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-100 to-cyan-300 flex items-center justify-center p-6">
+      <div className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-6xl">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
+          React Hooks Navigation
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {navItems.map((item, index) => (
             <NavLink
-              to="/usestate"
+              key={index}
+              to={item.path}
               className={({ isActive }) =>
-                `block py-2 pr-4 pl-3  duration-200 ${
-                  isActive ? "text-orange-700" : "text-gray-700"
-                } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                `block text-center py-6 rounded-xl text-lg font-semibold transition duration-300 ease-in-out shadow-md hover:scale-105 ${
+                  isActive
+                    ? "bg-orange-100 text-orange-700"
+                    : "bg-yellow-400 text-gray-800 hover:bg-yellow-300"
+                }`
               }
             >
-              Use State
+              {item.label}
             </NavLink>
-          </div>
-          <div className="w-80 h-20 bg-yellow-500 flex items-center justify-center">
-            <NavLink
-              to="/useeffect"
-              className={({ isActive }) =>
-                `block py-2 pr-4 pl-3  duration-200 ${
-                  isActive ? "text-orange-700" : "text-gray-700"
-                } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-              }
-            >
-              Use Effect
-            </NavLink>
-          </div>
-          <div className="w-80 h-20 bg-yellow-500 flex items-center justify-center">
-            <NavLink
-              to="/UseRef"
-              className={({ isActive }) =>
-                `block py-2 pr-4 pl-3  duration-200 ${
-                  isActive ? "text-orange-700" : "text-gray-700"
-                } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-              }
-            >
-              Use Ref
-            </NavLink>
-          </div>
-          <div className="w-80 h-20 bg-yellow-500 flex items-center justify-center">
-            <NavLink
-              to="/usecallback"
-              className={({ isActive }) =>
-                `block py-2 pr-4 pl-3  duration-200 ${
-                  isActive ? "text-orange-700" : "text-gray-700"
-                } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-              }
-            >
-              Use Call Back
-            </NavLink>
-          </div>
-          <div className="w-80 h-20 bg-yellow-500 flex items-center justify-center">
-            <NavLink
-              to="/usememu"
-              className={({ isActive }) =>
-                `block py-2 pr-4 pl-3  duration-200 ${
-                  isActive ? "text-orange-700" : "text-gray-700"
-                } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-              }
-            >
-              Use memu
-            </NavLink>
-          </div>
+          ))}
         </div>
       </div>
     </div>
